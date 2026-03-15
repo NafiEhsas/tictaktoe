@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     #container{
+        width: 600px;
+        height: 600px;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        flex-direction: column;
+    }
+
+    h1{
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-right: 40px;
+        font-size: 40px;
+        font-weight: bold;
+        text-shadow: 10px 10px 10px gray;
+        animation-name: title;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes title {
+
+        0%{
+            text-shadow: 10px 10px 10px gray;
+        }25%{
+            text-shadow: 10px 10px 10px rgb(160, 160, 206);
+        }
+        50%{
+            text-shadow: 10px 10px 10px rgb(115, 115, 196);
+        }
+        
+        75%{
+            text-shadow: 10px 10px 10px rgb(63, 63, 188);
+
+        }
+        100%{
+            text-shadow: 10px 10px 10px rgb(204, 84, 33);
+        }
+        
+    }
+
+    section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #div1,#div2,#div3,#div4,#div5,#div6,#div7,#div8,#div9{
+        border: 1px solid rgb(91, 91, 91);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 140px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+
+        /* animation: borderAnimation;
+        animation-duration: 4s;
+        animation-iteration-count: infinite; */
+
+    }
+
+    /* @keyframes borderAnimation {
+        0%{
+            border: 1px solid red;
+        }25%{
+            border: 1px solid rgb(193, 87, 87);
+           
+        }
+        50%{
+           border: 1px solid rgb(141, 94, 94);
+        }
+        
+        75%{
+           border: 1px solid rgb(133, 94, 94);
+
+        }
+        100%{
+            border: 1px solid rgb(78, 62, 62);
+        }
+    } */
+
+    #div1{
+        border-top: none;
+        border-left: none;
+    }
+    #div2{
+        border-top: none;
+        
+    }
+    #div3{
+        border-top: none;
+        border-right: none;
+    }
+    #div4{
+        border-left: none;
+    }
+    #div6{
+        border-right: none;
+    }
+    #div7{
+        border-left: none;
+        border-bottom: none;
+    }
+    #div8{
+       
+        border-bottom: none;
+    }
+    #div9{
+        border-right: none;
+        border-bottom: none;
+    }
+    
+    #restartGame{
+        width: 500px;
+        background-color: rgba(21, 46, 40, 0.739);
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 5px 5px 5px rgb(176, 172, 172);
+        border-radius: 10px;
+        position: absolute;
+        display: none;
+        z-index:1;
+        flex-direction: column;
+        /* right:100px; */
+    }
+
+
+    #again-button{
+        background-color: rgba(15, 177, 231, 0.617);
+        font-size: 20px;
+        border-radius: 5px;
+        border: none;
+        width:150px;
+        height:50px;
+        cursor:pointer;
+        color:white;
+        transition:360ms;
+    }
+
+    #again-button:hover{
+        transform: scale(1.2);
+    }
+
+
+    #result{
+        /* font-size: 25px; */
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+
+    #switchMode{
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1300px;
+    }
+
+    #line_one{
+        width:500px;
+        height:10px;
+        background-color:red;
+        position:relative;
+        top:100px;
+        display:none;
+    }
+
+    #line_two{
+        width:500px;
+        height:10px;
+        background-color:red;
+        position:relative;
+        top:300px;
+        display:none;
+
+    }
+
+    #line_three{
+        width:500px;
+        height:10px;
+        background-color:red;
+        position:relative;
+        top:500px;
+        display:none;
+
+    }
+
+    #line_four{
+        width:500px;
+        height:10px;
+        background-color:red;
+        position:relative;
+        top:350px;
+        transform: rotate(90deg);
+        display:none;
+
+    }
+
+    #line_five{
+        width:500px;
+        height:10px;
+        background-color:red;
+        position:relative;
+        top:350px;
+        right:200px;
+        transform: rotate(90deg);
+        display:none;
+
+    }
+    #line_six{
+        width:500px;
+        height:10px;
+        background-color:red;
+        position:relative;
+        top:350px;
+        left:200px;
+        transform: rotate(90deg);
+        display:none;
+
+    }
+    #line_seven{
+        width:600px;
+        height:10px;
+        background-color:red;
+        position:relative;
+        top:300px;
+        /* left:20px; */
+        transform: rotate(45deg);
+        display:none;
+    }
+
+
+    #line_eight{
+         width:600px;
+        height:10px;
+        background-color:red;
+        position:relative;
+        top:300px;
+        /* left:20px; */
+        transform: rotate(-45deg);
+        display:none;
+    }
+
+</style>
+
+<body id="body">
+    <span style="font-size:30px; right:0; top:0; position:absolute" onclick="switchMode()" id="switchMode">🔆</span>
+    <section>
+        <h1>Tic Tac Toe</h1>
+        <div id="line_one"></div>
+        <div id="line_two"></div>
+        <div id="line_three"></div>
+        <div id="line_four"></div>
+        <div id="line_five"></div>
+        <div id="line_six"></div>
+        <div id="line_seven"></div>
+        <div id="line_eight"></div>
+        <div id="container">
+            <div id="div1" onclick="changeContent('div1')"></div>
+            <div id="div2" onclick="changeContent('div2')"></div>
+            <div id="div3" onclick="changeContent('div3')"></div>
+            <div id="div4" onclick="changeContent('div4')"></div>
+            <div id="div5" onclick="changeContent('div5')"></div>
+            <div id="div6" onclick="changeContent('div6')"></div>
+            <div id="div7" onclick="changeContent('div7')"></div>
+            <div id="div8" onclick="changeContent('div8')"></div>
+            <div id="div9" onclick="changeContent('div9')"></div>
+        </section>
+
+
+        <div id="restartGame">
+            <h1 id="result">Result</h1>
+            <button id="again-button" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    let div1 = document.getElementById("div1")
+    let div2 = document.getElementById("div2")
+    let div3 = document.getElementById("div3")
+    let div4 = document.getElementById("div4")
+    let div5 = document.getElementById("div5")
+    let div6 = document.getElementById("div6")
+    let div7 = document.getElementById("div7")
+    let div8 = document.getElementById("div8")
+    let div9 = document.getElementById("div9")
+    let restartGameDiv = document.getElementById("restartGame")
+    let result = document.getElementById("result")
+
+    let lineOne = document.getElementById("line_one")
+    let lineTwo = document.getElementById("line_two")
+    let lineThree = document.getElementById("line_three")
+    let lineFour = document.getElementById("line_four")
+    let lineFive = document.getElementById("line_five")
+    let lineSix = document.getElementById("line_six")
+    let lineSeven = document.getElementById("line_seven")
+    let lineEight = document.getElementById("line_eight")
+    
+    let rememberLastContent = "O"
+
+
+
+    let contents = ["","","","","","","","",""]
+
+
+    function changeContent(name){
+    if(someOneWon==false){
+ if(name=="div1" && contents[0]==""){
+            if(rememberLastContent=="X"){
+                div1.innerHTML = "O"
+                rememberLastContent = "O"
+                contents[0] = "O"
+            }else{
+                div1.innerHTML="X"
+                rememberLastContent = "X"
+                contents[0] = "X"
+            }
+        }else if(name=="div2" && contents[1]==""){
+            if(rememberLastContent == "X"){
+                div2.innerHTML ="O"
+                rememberLastContent = "O"
+                contents[1] = "O"
+            }else{
+                div2.innerHTML="X"
+                rememberLastContent = "X"
+                contents[1] = "X"
+            }
+        }
+        else if(name=="div3" && contents[2]==""){
+            if(rememberLastContent == "X"){
+                div3.innerHTML ="O"
+                rememberLastContent = "O"
+                contents[2] = "O"
+            }else{
+                div3.innerHTML="X"
+                rememberLastContent = "X"
+                contents[2] = "X"
+            }
+        }
+        else if(name=="div4" && contents[3]==""){
+            if(rememberLastContent == "X"){
+                div4.innerHTML ="O"
+                rememberLastContent = "O"
+                contents[3] = "O"
+            }else{
+                div4.innerHTML="X"
+                rememberLastContent = "X"
+                contents[3] = "X"
+            }
+        }
+        else if(name=="div5" && contents[4]==""){
+            if(rememberLastContent == "X"){
+                div5.innerHTML ="O"
+                rememberLastContent = "O"
+                contents[4] = "O"
+            }else{
+                div5.innerHTML="X"
+                rememberLastContent = "X"
+                contents[4] = "X"
+            }
+        }
+        else if(name=="div6" && contents[5]==""){
+            if(rememberLastContent == "X"){
+                div6.innerHTML ="O"
+                rememberLastContent = "O"
+                contents[5] = "O"
+            }else{
+                div6.innerHTML="X"
+                rememberLastContent = "X"
+                contents[5] = "X"
+            }
+        }
+        
+        else if(name=="div7" && contents[6]==""){
+            if(rememberLastContent == "X"){
+                div7.innerHTML ="O"
+                rememberLastContent = "O"
+                contents[6] = "O"
+            }else{
+                div7.innerHTML="X"
+                rememberLastContent = "X"
+                contents[6] = "X"
+            }
+        }
+        
+        else if(name=="div8" && contents[7]==""){
+            if(rememberLastContent == "X"){
+                div8.innerHTML ="O"
+                rememberLastContent = "O"
+                contents[7] = "O"
+            }else{
+                div8.innerHTML="X"
+                rememberLastContent = "X"
+                contents[7] = "X"
+            }
+        }
+        else if(name=="div9" && contents[8]==""){
+            if(rememberLastContent == "X"){
+                div9.innerHTML ="O"
+                rememberLastContent = "O"
+                contents[8] = "O"
+            }else{
+                div9.innerHTML="X"
+                rememberLastContent = "X"
+                contents[8] = "X"
+            }
+        }
+
+        detectWinAndLose()
+    }
+    }
+
+
+    let someOneWon = false
+
+    function detectWinAndLose(){
+
+        if(contents[0]=="X" && contents[1]=="X" && contents[2]=="X"){
+            someOneWon = true
+            restartGameDiv.style.display="flex"
+            result.innerHTML = "X Won"
+            lineOne.style.display = "block"
+        }else if(contents[0]=="X" && contents[3]=="X" && contents[6]=="X"){
+            someOneWon = true
+            restartGameDiv.style.display="flex"
+            result.innerHTML="X won"
+            lineFive.style.display = "block"
+        }
+        else if(contents[0]=="X" && contents[4]=="X" && contents[8]=="X"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="X won"
+            someOneWon = true
+            lineSeven.style.display = "block"
+        }
+        else if(contents[1]=="X" && contents[4]=="X" && contents[7]=="X"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="X won"
+            someOneWon = true
+            lineFour.style.display = "block"
+        }
+        else if(contents[2]=="X" && contents[5]=="X" && contents[8]=="X"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="X won"
+            someOneWon = true
+            lineSix.style.display = "block"
+        }
+        else if(contents[2]=="X" && contents[4]=="X" && contents[6]=="X"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="X won"
+            someOneWon = true
+            lineEight.style.display = "block"
+        }
+        else if(contents[3]=="X" && contents[4]=="X" && contents[5]=="X"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="X won"
+            someOneWon = true
+            lineTwo.style.display = "block"
+        }
+        else if(contents[6]=="X" && contents[7]=="X" && contents[8]=="X"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="X won"
+            someOneWon = true
+            lineThree.style.display = "block"
+        }
+        
+        else if(contents[0]=="O" && contents[1]=="O" && contents[2]=="O"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="O won"
+            someOneWon = true
+            lineOne.style.display = "block"
+
+        }else if(contents[0]=="O" && contents[3]=="O" && contents[6]=="O"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="O won"
+            someOneWon = true
+            lineFive.style.display = "block"
+        }
+        else if(contents[0]=="O" && contents[4]=="O" && contents[8]=="O"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="O won"
+            someOneWon = true
+            lineSeven.style.display = "block"
+        }
+        else if(contents[1]=="O" && contents[4]=="O" && contents[7]=="O"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="O won"
+            someOneWon = true
+            lineFour.style.display = "block"
+        }
+        else if(contents[2]=="O" && contents[5]=="O" && contents[8]=="O"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="O won"
+            someOneWon = true
+            lineSix.style.display = "block"
+        }
+        else if(contents[2]=="O" && contents[4]=="O" && contents[6]=="O"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="O won"
+            someOneWon = true
+            lineEight.style.display = "block"
+        }
+        else if(contents[3]=="O" && contents[4]=="O" && contents[5]=="O"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="O won"
+            someOneWon = true
+            lineTwo.style.display = "block"
+        }
+        else if(contents[6]=="O" && contents[7]=="O" && contents[8]=="O"){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="O won"
+            someOneWon = true
+            lineThree.style.display = "block"
+        }else if(!contents.includes("") && someOneWon==false){
+            restartGameDiv.style.display="flex"
+            result.innerHTML="Tie"
+            someOneWon = true
+        }
+    }
+
+    
+    let title = document.getElementById("header")
+    let switchModeBtn = document.getElementById("switchMode")
+    let bdy = document.getElementById("body")
+
+    let isLightModeOn = true
+
+    function switchMode(){
+        if(isLightModeOn===true){
+            bdy.style.color="white"
+            bdy.style.backgroundColor="black"
+            switchModeBtn.innerHTML="🌙"
+            console.log("lightModeOn")
+            isLightModeOn = false
+        }else{
+            bdy.style.color="black"
+            bdy.style.backgroundColor="white"
+            switchModeBtn.innerHTML = "🔆"
+            isLightModeOn = true
+            console.log("lightModeOFF")
+        }
+    }
+
+    function restartGame(){
+            someOneWon = false
+           
+            contents[0] = ""
+            contents[1] = ""
+            contents[2] = ""
+            contents[3] = ""
+            contents[4] = ""
+            contents[5] = ""
+            contents[6] = ""
+            contents[7] = ""
+            contents[8] = ""
+
+            
+            div1.innerHTML = ""
+            div2.innerHTML = ""
+            div3.innerHTML = ""
+            div4.innerHTML = ""
+            div5.innerHTML = ""
+            div6.innerHTML = ""
+            div7.innerHTML = ""
+            div8.innerHTML = ""
+            div9.innerHTML = ""
+
+            restartGameDiv.style.display = "none"
+
+            lineOne.style.display = "none"
+            lineTwo.style.display = "none"
+            lineThree.style.display = "none"
+            lineFour.style.display = "none"
+            lineFive.style.display = "none"
+            lineSix.style.display = "none"
+            lineSeven.style.display = "none"
+            lineEight.style.display = "none"
+
+         
+    }
+
+
+
+
+</script>
+
+</html>
