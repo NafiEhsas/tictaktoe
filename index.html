@@ -7,7 +7,7 @@
 </head>
 <style>
      #container{
-        width: 600px;
+        width: 40vw;
         height: 600px;
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
@@ -59,6 +59,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        min-width: 60vw;
     }
 
     #div1,#div2,#div3,#div4,#div5,#div6,#div7,#div8,#div9{
@@ -68,6 +69,7 @@
         align-items: center;
         font-size: 140px;
         font-family:Georgia, 'Times New Roman', Times, serif;
+        /* max-width: 60vw; */
 
         /* animation: borderAnimation;
         animation-duration: 4s;
@@ -259,6 +261,69 @@
         /* left:20px; */
         transform: rotate(-45deg);
         display:none;
+        border: none;
+    }
+
+    @media screen and (max-width: 600px){
+             #container{
+        width: 90vw;
+        height: 600px;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+       
+    }
+
+        section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-width: 90vw;
+    
+    }
+
+        #div1,#div2,#div3,#div4,#div5,#div6,#div7,#div8,#div9{
+        border: 1px solid rgb(91, 91, 91);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 140px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+
+    }
+
+    
+    #div1{
+        border-top: none;
+        border-left: none;
+    }
+    #div2{
+        border-top: none;
+        
+    }
+    #div3{
+        border-top: none;
+        border-right: none;
+    }
+    #div4{
+        border-left: none;
+    }
+    #div6{
+        border-right: none;
+    }
+    #div7{
+        border-left: none;
+        border-bottom: none;
+    }
+    #div8{
+       
+        border-bottom: none;
+    }
+    #div9{
+        border-right: none;
+        border-bottom: none;
+    }
     }
 
 </style>
